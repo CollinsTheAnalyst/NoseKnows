@@ -1,0 +1,6 @@
+@import "./styles/globals.css";
+
+/* Example: smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
