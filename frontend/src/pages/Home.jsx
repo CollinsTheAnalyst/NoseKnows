@@ -1,67 +1,133 @@
-import React from "react";
-import Button from "../components/button/button.jsx";
-import Card from "../components/card/card.jsx";
-
-
+// src/pages/Home.jsx
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import HeroSection from "../components/hero/HeroSection.jsx";
+import HeroFilter from "../components/filters/HeroFilter.jsx";
+import Card from "../components/card/Card.jsx";
 
 const Home = () => {
-  // Sample featured products
-  const featuredProducts = [
-    { id: 1, title: "Floral Fantasy", description: "A refreshing mix of jasmine and rose." },
-    { id: 2, title: "Woody Wonder", description: "Earthy tones of cedar and sandalwood." },
-    { id: 3, title: "Citrus Splash", description: "Zesty citrus aroma for daily freshness." },
-  ];
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [loadingBrands, setLoadingBrands] = useState(true);
 
-  return (
-    <div className="space-y-24">
+  useEffect(() => {
+    fetch("http://localhost:8000/frontend/products/")
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data.results || []);
+        setLoadingProducts(false);
+      })
+      .catch(err => console.error("Failed to load products:", err));
 
-      {/* Hero Section */}
-      <section className="bg-[#E6FIFA] py-32 text-center">
-        <h1 className="text-5xl font-playfair font-bold text-[#042540] mb-4">
-          Discover Your Signature Scent <span className="text-[#F645C0]">Today</span>
-        </h1>
-        <p className="text-[#042540] font-montserrat text-lg mb-8 max-w-2xl mx-auto">
-          Explore our luxurious perfume collection designed for every mood and moment.
-        </p>
-        <Button onClick={() => console.log("Shop Collection clicked")}>Shop Collection</Button>
-      </section>
+    fetch("http://localhost:8000/frontend/brands/")
+      .then(res => res.json())
+      .then(data => {
+        setBrands(data.results || []);
+        setLoadingBrands(false);
+      })
+      .catch(err => console.error("Failed to load brands:", err));
+  }, []);
 
-      {/* About / Features Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
-        <Card
-          title="Premium Ingredients"
-          description="We source only the finest raw materials for our fragrances."
-        />
-        <Card
-          title="Custom Blends"
-          description="Every scent is carefully blended for a unique experience."
-        />
-        <Card
-          title="Eco-Friendly"
-          description="Our packaging and production prioritize sustainability."
-        />
-      </section>
+  const renderProductSection = (title, productList, bgColor = "bg-gradient-to-r from-gray-50 to-pink-50") => (
+    <>
+      {/* Section Title */}
+      <div className="text-center mb-4">
+        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">{title}</h2>
+      </div>
 
-      {/* Featured Products / Shop Preview */}
-      <section className="bg-[#FDECEF] py-16">
+      {/* Product Grid */}
+      <section className={`${bgColor} py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-playfair font-bold text-[#042540] mb-8 text-center">
-            Shop Our Collection
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProducts.map((product) => (
-              <Card
-                key={product.id}
-                title={product.title}
-                description={product.description}
-                buttonText="Buy Now"
-                onButtonClick={() => console.log(`${product.title} clicked`)}
-              />
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {productList.map(product => {
+              const priceRange =
+                Array.isArray(product.variants) && product.variants.length > 0
+                  ? product.variants.length > 1
+                    ? `${product.variants[0]?.price} - ${product.variants[product.variants.length - 1]?.price}`
+                    : `${product.variants[0]?.price}`
+                  : "N/A";
+
+              return (
+                <Card
+                  key={product.id}
+                  image={product.images[0]?.image_url}
+                  title={product.name}
+                  priceRange={priceRange}
+                  showActions={true}
+                  imageClassName="h-72 object-contain"
+                  onCartClick={() => console.log(`${product.name} added to cart`)}
+                  onWhatsAppClick={() => console.log(`WhatsApp clicked for ${product.name}`)}
+                  onWishlistClick={() => console.log(`Wishlist clicked for ${product.name}`)}
+                  onClick={() => navigate(`/product/${product.slug}`)} // Navigate to ProductDetails
+                  className="cursor-pointer" // show hover pointer
+                />
+              );
+            })}
           </div>
         </div>
       </section>
+    </>
+  );
 
+  return (
+    <div className="space-y-12">
+      <HeroSection />
+      <HeroFilter />
+
+      {loadingProducts ? (
+        <p className="text-center py-16">Loading products...</p>
+      ) : (
+        <>
+          {renderProductSection(
+            "Men",
+            products.filter(p => p.categories.some(c => c.name.toLowerCase() === "men")),
+            "bg-gradient-to-r from-gray-50 to-pink-50"
+          )}
+          {renderProductSection(
+            "Ladies",
+            products.filter(p => p.categories.some(c => c.name.toLowerCase() === "women")),
+            "bg-gradient-to-r from-pink-50 to-gray-50"
+          )}
+          {renderProductSection(
+            "Unisex",
+            products.filter(p => p.categories.some(c => c.name.toLowerCase() === "unisex")),
+            "bg-gradient-to-r from-gray-50 to-pink-50"
+          )}
+        </>
+      )}
+
+      {/* Featured Brands */}
+      <div className="text-center mb-4">
+        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">Featured Brands</h2>
+      </div>
+      <section className="bg-pink-50 py-12">
+        {loadingBrands ? (
+          <p className="text-center">Loading brands...</p>
+        ) : (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+            {brands.map(brand => (
+              <img
+                key={brand.id}
+                src={brand.image}
+                alt={brand.name}
+                className="w-full h-24 object-contain"
+              />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* FAQs */}
+      <div className="text-center mb-4">
+        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">Frequently Asked Questions</h2>
+      </div>
+      <section className="bg-gray-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <p className="text-center text-gray-500">FAQs will be dynamically loaded from the backend here.</p>
+        </div>
+      </section>
     </div>
   );
 };

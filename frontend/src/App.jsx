@@ -13,6 +13,8 @@ import Shop from "./pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import Brands from "./pages/Brands.jsx"; // Brand list page
+import BrandDetails from "./pages/BrandDetails.jsx"; // Brand details page
 
 // ScrollToTop ensures the page always scrolls to top on route change
 const ScrollToTop = () => {
@@ -39,7 +41,12 @@ const App = () => {
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/product/:slug" element={<ProductDetails />} />
+
+
+            {/* Brands */}
+            <Route path="/brands" element={<Brands />} /> {/* Brand list page */}
+            <Route path="/brands/:slug" element={<BrandDetails />} /> {/* Brand detail page */}
           </Routes>
         </div>
       </main>

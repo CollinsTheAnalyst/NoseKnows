@@ -1,116 +1,141 @@
 // src/components/navigation/TopNav.jsx
-import React, { useState, useEffect } from "react";
-import Button from "../button/button.jsx";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Search,
+  Menu,
+  X,
+  Phone,
+  Facebook,
+  Instagram,
+  Twitter,
+  ShoppingCart,
+  Heart,
+} from "lucide-react";
+import logo from "../../assets/noseknows logo.png";
 
 const TopNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Optional: add background shadow on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-white/90"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-        {/* Logo */}
-        <Link to="/" className="text-primary text-3xl font-playfair font-bold">
-          NoseKnows
-        </Link>
+    <nav className="bg-[#00306b] text-white fixed w-full top-0 z-50 shadow-lg">
+      {/* --- Top Utility Bar --- */}
+      <div className="py-2 px-6 flex justify-between items-center text-sm">
+        {/* Left: Empty (for balance or future message) */}
+        <div></div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/"
-            className="font-montserrat text-textDark hover:text-accentBlue transition duration-300 relative after:block after:h-0.5 after:w-0 after:bg-accentBlue after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Home
-          </Link>
-          <Link
-            to="/shop"
-            className="font-montserrat text-textDark hover:text-accentBlue transition duration-300 relative after:block after:h-0.5 after:w-0 after:bg-accentBlue after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Shop
-          </Link>
-          <Link
-            to="/about"
-            className="font-montserrat text-textDark hover:text-accentBlue transition duration-300 relative after:block after:h-0.5 after:w-0 after:bg-accentBlue after:transition-all after:duration-300 hover:after:w-full"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="font-montserrat text-textDark hover:text-accentBlue transition duration-300 relative after:block after:h-0.5 after:w-0 after:bg-accentBlue after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Contact
-          </Link>
-
-          {/* CTA Button */}
-          <Button className="ml-4 bg-accentBlue text-white hover:bg-blue-600 transition-colors duration-300">
-            Shop Now
-          </Button>
-        </div>
-
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-textDark text-3xl focus:outline-none"
-          >
-            {isOpen ? "×" : "☰"}
-          </button>
+        {/* Right: Phone + Social Icons */}
+        <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2">
+            <Phone size={16} className="text-yellow-400" />
+            <span>+254 714 326 105</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <a href="#" className="hover:text-yellow-400 transition">
+              <Facebook size={18} />
+            </a>
+            <a href="#" className="hover:text-yellow-400 transition">
+              <Instagram size={18} />
+            </a>
+            <a href="#" className="hover:text-yellow-400 transition">
+              <Twitter size={18} />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-inner transition-all duration-300">
-          <Link
-            to="/"
-            className="block px-6 py-3 text-textDark font-montserrat hover:text-accentBlue transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            to="/shop"
-            className="block px-6 py-3 text-textDark font-montserrat hover:text-accentBlue transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Shop
-          </Link>
-          <Link
-            to="/about"
-            className="block px-6 py-3 text-textDark font-montserrat hover:text-accentBlue transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="block px-6 py-3 text-textDark font-montserrat hover:text-accentBlue transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </Link>
+      {/* --- Main Navigation Bar --- */}
+      <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col lg:flex-row items-center justify-between gap-6">
+        {/* Left: Logo */}
+        <Link to="/" className="flex items-center space-x-8 -ml-10">
+          <img
+            src={logo}
+            alt="NoseKnows Logo"
+            className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+          />
+        </Link>
 
-          <div className="px-6 py-3">
-            <Button
-              className="w-full bg-accentBlue text-white hover:bg-blue-600 transition-colors duration-300"
-              onClick={() => setIsOpen(false)}
+        {/* Center: Search Bar */}
+        <div className="relative w-full max-w-xl order-3 lg:order-none">
+          <input
+            type="text"
+            placeholder="Search for perfumes..."
+            className="pl-5 pr-10 py-3 rounded-full bg-white text-gray-800 text-sm w-full focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+          <Search
+            size={20}
+            className="absolute right-4 top-3.5 text-gray-700 cursor-pointer"
+          />
+        </div>
+
+        {/* Right: Nav Links + Icons */}
+        <div className="hidden lg:flex items-center space-x-8 pl-4">
+          {["Home", "Brands", "Shop", "Blog", "Contact Us"].map((item) => (
+            <Link
+              key={item}
+              to={`/${item === "Home" ? "" : item.toLowerCase().replace(" ", "-")}`}
+              className="text-white text-[15px] font-montserrat hover:text-yellow-400 transition duration-300"
             >
-              Shop Now
-            </Button>
+              {item}
+            </Link>
+          ))}
+
+          {/* Wishlist + Cart */}
+          <div className="flex items-center space-x-4 pl-2">
+            <button className="hover:text-yellow-400 transition">
+              <Heart size={22} />
+            </button>
+            <button className="hover:text-yellow-400 transition relative">
+              <ShoppingCart size={22} />
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#00306b] text-xs font-bold px-1.5 rounded-full">
+                2
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Icon */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden text-white focus:outline-none"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* --- Mobile Dropdown --- */}
+      {menuOpen && (
+        <div className="lg:hidden bg-[#00306b]">
+          <div className="flex flex-col items-center space-y-3 py-4">
+            {["Home", "Brands", "Shop", "Blog", "Contact Us"].map((item) => (
+              <Link
+                key={item}
+                to={`/${item === "Home" ? "" : item.toLowerCase().replace(" ", "-")}`}
+                className="text-white text-base hover:text-yellow-400 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
+
+            {/* Mobile Search */}
+            <div className="relative px-4 w-full">
+              <input
+                type="text"
+                placeholder="Search perfumes..."
+                className="pl-4 pr-10 py-2 rounded-full bg-white text-gray-800 text-sm focus:outline-none w-full"
+              />
+              <Search
+                size={18}
+                className="absolute right-7 top-3 text-gray-700 cursor-pointer"
+              />
+            </div>
+
+            {/* Wishlist + Cart for Mobile */}
+            <div className="flex items-center justify-center gap-6 pt-3">
+              <Heart size={22} className="hover:text-yellow-400 transition" />
+              <ShoppingCart size={22} className="hover:text-yellow-400 transition" />
+            </div>
           </div>
         </div>
       )}
