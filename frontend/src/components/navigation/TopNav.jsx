@@ -13,7 +13,7 @@ import {
   Heart,
 } from "lucide-react";
 import { useCart } from "../../context/cartcontext.jsx"; // Cart + Wishlist context
-import logo from "../../assets/logo.PNG";
+
 
 const TopNav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
