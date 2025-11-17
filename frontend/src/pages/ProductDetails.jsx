@@ -5,6 +5,8 @@ import { Heart, ShoppingCart, MessageCircle } from "lucide-react";
 import CartModal from "../components/cart/cartmodal"; 
 import { useCart } from "../context/cartcontext.jsx"; // ✅ import context
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 const ProductDetails = () => {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);

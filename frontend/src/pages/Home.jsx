@@ -11,6 +11,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart(); // Get the global addToCart function
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  
   // 🔹 States
   const [products, setProducts] = useState([]);
   const [brands, setBrands] = useState([]);
