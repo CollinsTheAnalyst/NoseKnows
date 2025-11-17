@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSection from "../components/hero/HeroSection.jsx";
+import HeroSection from "../components/hero/heroSection.jsx";
 import HeroFilter from "../components/filters/heroFilter.jsx";
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
