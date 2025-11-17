@@ -7,7 +7,10 @@ load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # <- Change this for quick deployment
+
+# RECOMMENDED: For better security, once you have the Choreo domain:
+# ALLOWED_HOSTS = ['.choreo.dev', 'your-frontend-domain.com']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -36,6 +39,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # allow frontend-backend communication
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
