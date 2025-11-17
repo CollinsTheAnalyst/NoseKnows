@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "../components/hero/HeroSection.jsx";
-import HeroFilter from "../components/filters/HeroFilter.jsx";
+import HeroFilter from "../components/filters/heroFilter.jsx";
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useCart } from "../context/cartcontext.jsx"; // ✅ Use global cart
@@ -12,7 +12,7 @@ const Home = () => {
   const { addToCart } = useCart(); // Get the global addToCart function
 
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
-  
+
   // 🔹 States
   const [products, setProducts] = useState([]);
   const [brands, setBrands] = useState([]);
