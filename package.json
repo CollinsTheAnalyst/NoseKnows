@@ -1,0 +1,32 @@
+{
+  "name": "noseknows",
+  "version": "1.0.0",
+  "description": "An ecommerce website for NoseKnows - a perfume shop.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CollinsTheAnalyst/NoseKnows.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CollinsTheAnalyst/NoseKnows/issues"
+  },
+  "homepage": "https://github.com/CollinsTheAnalyst/NoseKnows#readme",
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.11"
+  }
+}

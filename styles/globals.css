@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Body & text defaults */
+body {
+  @apply font-sans; /* Montserrat for body */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif text-primary;
+}
+
+
+/* Links */
+a {
+  @apply text-secondary hover:text-primary transition-colors duration-300;
+}
+
+/* Buttons (default styling) */
+button {
+  @apply bg-primary text-accent px-6 py-2 rounded-md font-semibold hover:bg-secondary transition-colors duration-300;
+}
+
+/* Images */
+img {
+  @apply max-w-full h-auto;
+}
+
+

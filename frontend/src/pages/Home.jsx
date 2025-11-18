@@ -1,8 +1,8 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSection from "../components/hero/heroSection.jsx";
-import HeroFilter from "../components/filters/heroFilter.jsx";
+import HeroSection from "../components/hero/HeroSection.jsx"; // <-- FIXED CASING
+import HeroFilter from "../components/filters/herofilter.jsx"; // <-- FIXED CASING
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useCart } from "../context/cartcontext.jsx"; // ✅ Use global cart
@@ -11,7 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart(); // Get the global addToCart function
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // <-- API_URL 
 
   // 🔹 States
   const [products, setProducts] = useState([]);
