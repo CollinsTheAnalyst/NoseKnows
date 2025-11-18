@@ -1,13 +1,13 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSection from "../components/hero/HeroSection.jsx"; // <-- FIXED CASING (H, S)
-import HeroFilter from "../components/filters/herofilter.jsx"; // <-- FIXED CASING (all lowercase)
+import HeroSection from "../components/hero/HeroSection.jsx"; // CORRECTED: Matches file casing (HeroSection.jsx)
+import HeroFilter from "../components/filters/herofilter.jsx"; // CORRECTED: Matches file casing (herofilter.jsx)
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useCart } from "../context/cartcontext.jsx"; // ✅ Use global cart
+import { useCart } from "../context/cartcontext.jsx";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // <-- Production API Base URL
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // Production API Base URL
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,10 +22,10 @@ const Home = () => {
   const [loadingBrands, setLoadingBrands] = useState(true);
   const [loadingFaqs, setLoadingFaqs] = useState(true);
 
-  // 🔹 Fetch products, brands, FAQs (FIXED PRODUCTION URLs)
+  // 🔹 Fetch products, brands, FAQs (FINAL CORRECTED PRODUCTION URLs)
   useEffect(() => {
     // Products
-    fetch(`${API_URL}/api/products/`) // <-- USES API_URL + /api/
+    fetch(`${API_URL}/api/products/`) // <-- CORRECTED: Uses API_URL + /api/
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.results || []);
@@ -34,7 +34,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to load products:", err));
 
     // Brands
-    fetch(`${API_URL}/api/brands/`) // <-- USES API_URL + /api/
+    fetch(`${API_URL}/api/brands/`) // <-- CORRECTED: Uses API_URL + /api/
       .then((res) => res.json())
       .then((data) => {
         setBrands(data.results || []);
@@ -43,7 +43,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to load brands:", err));
 
     // FAQs
-    fetch(`${API_URL}/api/faqs/?featured=true`) // <-- USES API_URL + /api/
+    fetch(`${API_URL}/api/faqs/?featured=true`) // <-- CORRECTED: Uses API_URL + /api/
       .then((res) => res.json())
       .then((data) => {
         setFaqs(data.results || data);
@@ -90,7 +90,7 @@ const Home = () => {
                   priceRange={priceRange}
                   showActions={true}
                   imageClassName="h-72 object-contain"
-                  onCartClick={() => addToCart(product)} // ✅ Global cart
+                  onCartClick={() => addToCart(product)}
                   onWhatsAppClick={() =>
                     console.log(`WhatsApp clicked for ${product.name}`)
                   }
