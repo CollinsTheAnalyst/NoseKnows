@@ -3,7 +3,7 @@ import React from "react";
 import { FaShippingFast, FaCertificate, FaGift } from "react-icons/fa";
 import Button from "../button/button.jsx";
 import heroBottle from "../../assets/spray.png";
-import noseknowsLogo from "../../assets/noseknows_logo.png";
+import noseknowsLogo from "../../assets/Noseknows_logo.png";
 
 const HeroSection = () => {
   // Define the navigation handlers
