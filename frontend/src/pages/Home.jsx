@@ -1,13 +1,13 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSection from "../components/hero/HeroSection.jsx"; // Case fixed
-import HeroFilter from "../components/filters/herofilter.jsx"; // Case fixed
+import HeroSection from "../components/hero/HeroSection.jsx"; // CORRECTED CASING
+import HeroFilter from "../components/filters/herofilter.jsx"; // CORRECTED CASING
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useCart } from "../context/cartcontext.jsx";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // Dynamic API URL
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // Dynamic URL
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Home = () => {
   // 🔹 Fetch products, brands, FAQs (FINAL CORRECTED PRODUCTION URLs)
   useEffect(() => {
     // Products
-    fetch(`${API_URL}/api/products/`) 
+    fetch(`${API_URL}/api/products/`) // <-- CORRECTED
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.results || []);
@@ -34,7 +34,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to load products:", err));
 
     // Brands
-    fetch(`${API_URL}/api/brands/`) 
+    fetch(`${API_URL}/api/brands/`) // <-- CORRECTED
       .then((res) => res.json())
       .then((data) => {
         setBrands(data.results || []);
@@ -43,7 +43,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to load brands:", err));
 
     // FAQs
-    fetch(`${API_URL}/api/faqs/?featured=true`) 
+    fetch(`${API_URL}/api/faqs/?featured=true`) // <-- CORRECTED
       .then((res) => res.json())
       .then((data) => {
         setFaqs(data.results || data);
@@ -55,7 +55,7 @@ const Home = () => {
       });
   }, []);
 
-  // 🔹 Product Section Renderer
+  // 🔹 Product Section Renderer (omitted for brevity)
   const renderProductSection = (
     title,
     productList,

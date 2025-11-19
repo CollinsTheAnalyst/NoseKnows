@@ -11,7 +11,7 @@ const Brands = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8000/frontend/brands/") // backend brands endpoint
+    fetch(`${API_URL}/api/brands/`) // <-- CORRECTED: Uses API_URL and /api/
       .then(res => res.json())
       .then(data => {
         setBrands(data.results); // use the results array
