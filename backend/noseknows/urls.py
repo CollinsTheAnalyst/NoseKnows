@@ -4,21 +4,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic.base import RedirectView # ✅ ADD RedirectView
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    # 👇 ADD THIS LINE TO REDIRECT ROOT (/) TO /admin/
-    path('', RedirectView.as_view(url='/admin/', permanent=True)), 
+    # Redirect the root URL (/) to the Admin login page
+    path('', RedirectView.as_view(url='/admin/', permanent=True)),
 
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),
-    path('api/products/', include('products.urls')),
-    path('api/carts/', include('carts.urls')),
-    path('api/wishlist/', include('wishlist.urls')),
-    path('api/orders/', include('orders.urls')),
-    path('api/checkout/', include('checkout.urls')),
+
+    # Consolidate API app routing under /api/
+    path('api/', include('users.urls')),
+    path('api/', include('products.urls')),
+    path('api/', include('carts.urls')),
+    path('api/', include('wishlist.urls')),
+    path('api/', include('orders.urls')),
+    path('api/', include('checkout.urls')),
     path('api/', include('reviews.urls')),
-    path('frontend/', include('products.frontend_urls')),
 ]
 
 if settings.DEBUG:
