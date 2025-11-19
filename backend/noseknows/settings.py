@@ -1,13 +1,13 @@
 from pathlib import Path
-import os
+import os  
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
-DEBUG = False
-ALLOWED_HOSTS = ['*', 'noseknows-shop.pages.dev'] # <- Change this for quick deployment
+DEBUG = False # PRODUCTION SETTING
+ALLOWED_HOSTS = ['*', 'noseknows-shop.pages.dev']
 
 # RECOMMENDED: For better security, once you have the Choreo domain:
 # ALLOWED_HOSTS = ['.choreo.dev', 'your-frontend-domain.com']
@@ -107,10 +107,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
-# CORS
-CORS_ALLOW_ALL_ORIGINS = True
-# or use this instead for better security:
-CORS_ALLOWED_ORIGINS = ["https://noseknows-shop.pages.dev",]
+# CORS FIX: Removed conflicting CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    # Allow your live frontend domain to access the API
+    "https://noseknows-shop.pages.dev", 
+]
 
 MPESA_CONSUMER_KEY = "your_consumer_key"
 MPESA_CONSUMER_SECRET = "your_consumer_secret"
@@ -227,4 +228,3 @@ JAZZMIN_UI_TWEAKS = {
         "btn-danger": "btn-danger"
     }
 }
-
