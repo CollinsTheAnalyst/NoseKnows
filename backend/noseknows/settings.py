@@ -6,8 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
-DEBUG = True
-ALLOWED_HOSTS = ['*'] # <- Change this for quick deployment
+DEBUG = False
+ALLOWED_HOSTS = ['*', 'noseknows-shop.pages.dev'] # <- Change this for quick deployment
 
 # RECOMMENDED: For better security, once you have the Choreo domain:
 # ALLOWED_HOSTS = ['.choreo.dev', 'your-frontend-domain.com']
@@ -110,7 +110,7 @@ REST_FRAMEWORK = {
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
 # or use this instead for better security:
-# CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = ["https://noseknows-shop.pages.dev",]
 
 MPESA_CONSUMER_KEY = "your_consumer_key"
 MPESA_CONSUMER_SECRET = "your_consumer_secret"
