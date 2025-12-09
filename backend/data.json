@@ -1,0 +1,959 @@
+[
+  {
+    "model": "sessions.session",
+    "pk": "0ebrh5a81tyl4f8rh81bsa6fout5rzd3",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vDCyF:PiVPMfWs1SOakjq1ICqURciiP1DvspU3Si6HFioTSKA",
+      "expire_date": "2025-11-10T02:28:31.554Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "1y49k6plxk4mopxd1zo8lw8bmua84r72",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlmb-E9JzxmsXXsXB1Ai5VMh7g6RUkD7Zua9VMZtbXlbeM5DVWfVqdPvRlgePO6g3nG8TbpM4zoPpHdFH3TR16ny83K4fwcNl_atIQFy3yVPlk2NVQKxA4piHZiYyJQQXR8qMwhxERCwnqSgseh7Ser9Ae7TOJY:1vBOcO:mySPg4Xw1GgDP0M4DhVUONzil18KXxEGaqwb8TTII34",
+      "expire_date": "2025-11-05T02:30:28.653Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "2f2620u3qw6x29r0gw6uttd6f8uro8ku",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vC7uS:XfWkaxnBcnHQMtqiy0X0AVDqMVYgQwtezCQFgGMdbvI",
+      "expire_date": "2025-11-07T02:52:08.529Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "6pkfydbs6egw9ld7zsb4oei44bq1m107",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vLeQv:EttN6G5HtSyxCWGHqFeh9bJSDeaRCInpW8uX_WEl9C4",
+      "expire_date": "2025-12-03T09:25:01.083Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "alvm6corxlgp5ak6d11023772f72fr1p",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlmb-E9JzxmsXXsXB1Ai5VMh7g6RUkD7Zua9VMZtbXlbeM5DVWfVqdPvRlgePO6g3nG8TbpM4zoPpHdFH3TR16ny83K4fwcNl_atIQFy3yVPlk2NVQKxA4piHZiYyJQQXR8qMwhxERCwnqSgseh7Ser9Ae7TOJY:1vBPDt:ty1KXUJFOccbQl8GjEQRu5jto28PjqucfCzd-WNfURg",
+      "expire_date": "2025-11-05T03:09:13.618Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hm4wvvzq2371trxbk23c50lvyutl1o7v",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vBxGE:m09zcflVnxO6r2a1EWSNtTdN7GC1w4OBE_eVyixcAXA",
+      "expire_date": "2025-11-06T15:29:54.911Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "mzup9c15wqob58q39bcxd7jeo0beb8gl",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vJm5J:cW47eXZPa-Camy5hbm3_rp5SS2culeK9VsdhI9j0sRo",
+      "expire_date": "2025-11-28T05:10:57.105Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "pm8qxaf88z284b5688jcmmt3qjtucqu4",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vLJ8L:yWM4z3Pi00Q0s6ct34Sm2EE1vKWNuVIbMvCdrPhz1wY",
+      "expire_date": "2025-12-02T10:40:25.491Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "qtnwhdhnltsv5oa7qv9ilm10608wbaqb",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vKryh:eWXJ8tCEKTKQpgEuP4zdhXv_SHYY15Cm-gwS1kxJq8o",
+      "expire_date": "2025-12-01T05:40:39.142Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "sz8qnh2uu9pygexze1od8296lmytzmym",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFleIlL9_0GMjAgVQNJaVfGf1eSLnR7zrn3xTzuW_F7T6tfiF0YsNMvCxgfqQ5Bd6y3xmOr27oEPhJ-2M7nRul5Pdq_g4K9fNfRUcgJhBVE4EwKTqABCRhAKcxauqiNAzibbCY5eNKTBKttVqQFsPcH5dQ3Ow:1vDaq3:MHASQ1PrQgjiAPgRPhV_7YfLEw7Z_-a2Rmo68EfXHZY",
+      "expire_date": "2025-11-11T03:57:39.086Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "wch06h0a6m8s8qmija6zolsxcfdg4qho",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlmb-E9JzxmsXXsXB1Ai5VMh7g6RUkD7Zua9VMZtbXlbeM5DVWfVqdPvRlgePO6g3nG8TbpM4zoPpHdFH3TR16ny83K4fwcNl_atIQFy3yVPlk2NVQKxA4piHZiYyJQQXR8qMwhxERCwnqSgseh7Ser9Ae7TOJY:1vStC3:_5LhCXDV_3tFtVM-qngivWG8rlqfr4hJKH_L5PkmQqI",
+      "expire_date": "2025-12-23T08:35:35.861Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fZvm9yP56TLwCqJ2HGVKVq$d+lVBFKmXt4YIDUaXv+bpTryAWtw6GCBiMAz9cqeyIA=",
+      "last_login": "2025-12-09T08:35:35.851Z",
+      "is_superuser": true,
+      "email": "Collinskimathimwiti@gmail.com",
+      "full_name": "Collins Mwiti",
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$iz446RSwTT7trUVQzXSxIO$Ynv0C/+xFZtD2iLMv0EsnQFFS9mS/3B9VWlRtgbLf8c=",
+      "last_login": "2025-11-19T09:25:01.083Z",
+      "is_superuser": true,
+      "email": "collinskim317@gmail.com",
+      "full_name": "Kimathi",
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$dgajCBULKyA7O3r88I6krc$0RVl8GUrJKcQofu+bfcRe8rQsbHm0u/jg4jXtSpIvVI=",
+      "last_login": null,
+      "is_superuser": true,
+      "email": "collinsmwitikimathi@gmail.com",
+      "full_name": "Mwiti Collins",
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$Txd4aq522Nkh5fbj1JmGbM$Bpu6hp8gJ+Aq67OCEGuPwvxY/adY8xIwtbHEWNVYglM=",
+      "last_login": "2025-11-19T09:23:48.309Z",
+      "is_superuser": false,
+      "email": "collinsmwiti98@gmail.com",
+      "full_name": "Collo",
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 1,
+    "fields": {
+      "name": "Chanel",
+      "image": "brands/chanel.png",
+      "slug": "chanel"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 2,
+    "fields": {
+      "name": "Versace",
+      "image": "brands/versace.png",
+      "slug": "versace"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 3,
+    "fields": {
+      "name": "Tomford",
+      "image": "brands/tomford.png",
+      "slug": "tomford"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 4,
+    "fields": {
+      "name": "Hugo Boss",
+      "image": "brands/hugo-boss.png",
+      "slug": "hugo-boss"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 5,
+    "fields": {
+      "name": "Kilian",
+      "image": "brands/kilian.png",
+      "slug": "kilian"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 6,
+    "fields": {
+      "name": "Hermes",
+      "image": "brands/hermes.png",
+      "slug": "hermes"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 7,
+    "fields": {
+      "name": "Aurora",
+      "image": "brands/aurora.png",
+      "slug": "aurora"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 8,
+    "fields": {
+      "name": "Al-Haramain",
+      "image": "brands/al-haramain.png",
+      "slug": "al-haramain"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 9,
+    "fields": {
+      "name": "Jean Paul Gaultier",
+      "image": "brands/Jean_Paul_Gaultier.png",
+      "slug": "jean-paul-gaultier"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 10,
+    "fields": {
+      "name": "Afnan",
+      "image": "brands/Afnan.png",
+      "slug": "afnan"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 11,
+    "fields": {
+      "name": "Amouage",
+      "image": "brands/amouage.png",
+      "slug": "amouage"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 12,
+    "fields": {
+      "name": "Burberry",
+      "image": "brands/burberry.png",
+      "slug": "burberry"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 13,
+    "fields": {
+      "name": "Bvlgari",
+      "image": "brands/bvlgari.png",
+      "slug": "bvlgari"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 14,
+    "fields": {
+      "name": "Calvin Klein",
+      "image": "brands/Calvin_Klein.png",
+      "slug": "calvin-klein"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 15,
+    "fields": {
+      "name": "Carolina Herrera",
+      "image": "brands/carolina-herrera.png",
+      "slug": "carolina-herrera"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 16,
+    "fields": {
+      "name": "creed",
+      "image": "brands/creed.png",
+      "slug": "creed"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 17,
+    "fields": {
+      "name": "Guerlain",
+      "image": "brands/guerlain.png",
+      "slug": "guerlain"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 18,
+    "fields": {
+      "name": "Dolce & Gabbana",
+      "image": "brands/Dolce__Gabbana.png",
+      "slug": "dolce-gabbana"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 19,
+    "fields": {
+      "name": "Yves Saint Laurent",
+      "image": "brands/Yves_Saint_Laurent.png",
+      "slug": "yves-saint-laurent"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 20,
+    "fields": {
+      "name": "Parfums de marly",
+      "image": "brands/parfums_de_marly.png",
+      "slug": "parfums-de-marly"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 21,
+    "fields": {
+      "name": "Armaf",
+      "image": "brands/armaf.png",
+      "slug": "armaf"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 22,
+    "fields": {
+      "name": "Azzaro",
+      "image": "brands/Azzaro.png",
+      "slug": "azzaro"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 23,
+    "fields": {
+      "name": "Dior",
+      "image": "brands/dior.png",
+      "slug": "dior"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 24,
+    "fields": {
+      "name": "Givenchy",
+      "image": "brands/givenchy.png",
+      "slug": "givenchy"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 25,
+    "fields": {
+      "name": "Gucci",
+      "image": "brands/Gucci.png",
+      "slug": "gucci"
+    }
+  },
+  {
+    "model": "products.brand",
+    "pk": 26,
+    "fields": {
+      "name": "Giorgio Armani",
+      "image": "brands/giorgio_armani.png",
+      "slug": "giorgio-armani"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "name": "men"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+      "name": "women"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+      "name": "unisex"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 4,
+    "fields": {
+      "name": "niche"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 5,
+    "fields": {
+      "name": "kids"
+    }
+  },
+  {
+    "model": "products.producttype",
+    "pk": 1,
+    "fields": {
+      "name": "Eau De Perfum"
+    }
+  },
+  {
+    "model": "products.producttype",
+    "pk": 2,
+    "fields": {
+      "name": "Eau De Toilette"
+    }
+  },
+  {
+    "model": "products.producttype",
+    "pk": 3,
+    "fields": {
+      "name": "Pure Perfume"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "brand": 6,
+      "name": "Jaguar",
+      "description": "A nice perfume for men",
+      "product_type": 2,
+      "scent_notes": "Top Bergamot",
+      "created_at": "2025-10-22T02:32:35.267Z",
+      "updated_at": "2025-10-23T16:30:34.258Z",
+      "slug": "Jaguar",
+      "categories": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "brand": 7,
+      "name": "Aurora Cleopatra EDP 100ml",
+      "description": "A nice perfume",
+      "product_type": 1,
+      "scent_notes": "Top Notes\r\n\r\nBase Notes:",
+      "created_at": "2025-10-23T16:28:26.856Z",
+      "updated_at": "2025-10-23T16:28:26.856Z",
+      "slug": "aurora-cleopatra-edp-100ml",
+      "categories": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "brand": 10,
+      "name": "9AM Afnan EDP 100ml",
+      "description": "A sophisticated and energetic fragrance that opens with bright citrus notes of mandarin and lemon, followed by a soft floral heart of lavender and rose, and a warm, inviting base of cedar and musk.",
+      "product_type": 1,
+      "scent_notes": "Top notes: Mandarin, cedrat, cardamom, and pink pepper.\r\n\r\nHeart notes: Lavender, orange blossom, rose, and green apple.\r\n\r\nBase notes: Cedarwood, moss, patchouli, and musk",
+      "created_at": "2025-10-24T03:32:05.153Z",
+      "updated_at": "2025-11-14T05:36:45.803Z",
+      "slug": "9am-afnan-edp-100ml",
+      "categories": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "brand": 8,
+      "name": "Amber Oud Gold Edition EDP 60ml",
+      "description": "The Amber Oud Gold Edition EDP 60ml by Al Haramain is a unisex, amber vanilla fragrance known for its potent, long-lasting fruity and sweet scent. It features a combination of fresh, green opening notes with a juicy, gourmand heart and a warm, woody base.",
+      "product_type": 1,
+      "scent_notes": "Top notes: Bergamot, green notes\r\n\r\nMiddle notes: Melon, pineapple, gourmand accord, amber\r\n\r\nBase notes: Vanilla, musk, woody notes",
+      "created_at": "2025-10-24T03:37:20.322Z",
+      "updated_at": "2025-10-24T03:37:20.322Z",
+      "slug": "amber-oud-gold-edition-edp-60ml",
+      "categories": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+      "brand": 22,
+      "name": "Azzaro The Most Wanted Intense EDP",
+      "description": "Azzaro The Most Wanted Eau de Parfum Intense is a warm, spicy, and woody men's fragrance known for its long-lasting, charismatic scent. It was designed for a daring and confident man who enjoys taking risks and making an impression. The fragrance is part of Azzaro's \"Wanted\" line and is housed in a distinctive matte black, barrel-shaped bottle",
+      "product_type": 1,
+      "scent_notes": "Top note: Guatemalan green cardamom. \r\n\r\nHeart note: toffee, Boulborn Vanilla.\r\n\r\nBase note: Amber wood, Woody Notes.",
+      "created_at": "2025-10-24T03:44:33.141Z",
+      "updated_at": "2025-11-14T05:39:50.843Z",
+      "slug": "azzaro-the-most-wanted-intense-edp",
+      "categories": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+      "brand": 23,
+      "name": "J'adore Eau de Parfum",
+      "description": "J'adore is an iconic women's floral fragrance from Dior, celebrated as a finely crafted bouquet. It is designed to be an ode to women, their boldness, and their beauty. The scent is a harmonious blend of the world's most beautiful flowers, creating a composition that is both effortlessly seductive and has an original, carnal signature without being overbearing.",
+      "product_type": 1,
+      "scent_notes": "Top Notes: Pear, Melon, Magnolia, Peach, Mandarin Orange, and Bergamot\r\n\r\nMiddle Notes: Jasmine, Lily-of-the-Valley, Tuberose, Freesia, Rose, Orchid, Plum, and Violet\r\n\r\nBase Notes: Musk, Vanilla, Blackberry, and Cedar",
+      "created_at": "2025-11-14T05:24:28.732Z",
+      "updated_at": "2025-11-14T05:24:28.732Z",
+      "slug": "jadore-eau-de-parfum",
+      "categories": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+      "brand": 25,
+      "name": "Gucci Flora Gorgeous Gardenia",
+      "description": "This fragrance is a joyful floral signature, built around the Gardenia flower, which has been admired since ancient times for its splendor. It's a delightful and delicate scent, often described as cheerful and bright, evoking the joy of blooming flowers. Can appeal to a wide range of ages, including those who prefer less intense fragrances.",
+      "product_type": 1,
+      "scent_notes": "Top Note: Pear Blossom\r\n\r\nHeart Notes: White Gardenia, Jasmine Grandiflorum\r\n\r\nBase Note: Brown Sugar, Patchouli",
+      "created_at": "2025-11-14T05:32:28.106Z",
+      "updated_at": "2025-11-14T05:32:28.107Z",
+      "slug": "gucci-flora-gorgeous-gardenia",
+      "categories": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 1,
+    "fields": {
+      "product": 2,
+      "size": "50",
+      "price": "10000.00",
+      "quantity_available": 7
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 2,
+    "fields": {
+      "product": 2,
+      "size": "125",
+      "price": "20000.00",
+      "quantity_available": 5
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 3,
+    "fields": {
+      "product": 1,
+      "size": "100",
+      "price": "2700.00",
+      "quantity_available": 4
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 4,
+    "fields": {
+      "product": 3,
+      "size": "100 ml",
+      "price": "7000.00",
+      "quantity_available": 10
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 5,
+    "fields": {
+      "product": 4,
+      "size": "60ml",
+      "price": "16000.00",
+      "quantity_available": 10
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 6,
+    "fields": {
+      "product": 5,
+      "size": "100 ml",
+      "price": "16000.00",
+      "quantity_available": 15
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 7,
+    "fields": {
+      "product": 6,
+      "size": "100 ml",
+      "price": "5500.00",
+      "quantity_available": 15
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 8,
+    "fields": {
+      "product": 6,
+      "size": "125 ml",
+      "price": "7000.00",
+      "quantity_available": 10
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 9,
+    "fields": {
+      "product": 7,
+      "size": "30 ml",
+      "price": "2000.00",
+      "quantity_available": 5
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 10,
+    "fields": {
+      "product": 7,
+      "size": "50 ml",
+      "price": "3500.00",
+      "quantity_available": 10
+    }
+  },
+  {
+    "model": "products.productvariant",
+    "pk": 11,
+    "fields": {
+      "product": 7,
+      "size": "100 ml",
+      "price": "7000.00",
+      "quantity_available": 15
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 1,
+    "fields": {
+      "product": 2,
+      "image": "products/Aurora.jpg",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 2,
+    "fields": {
+      "product": 2,
+      "image": "products/Aurora_Cleopatra_EDP_100ml.jpg",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 3,
+    "fields": {
+      "product": 2,
+      "image": "products/aurora_3.jpg",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 4,
+    "fields": {
+      "product": 1,
+      "image": "products/Jaguar_rkJQ50x.jpg",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 8,
+    "fields": {
+      "product": 4,
+      "image": "products/Amber_Ould_Gold_1.jpg",
+      "alt_text": "Amber Ould Gold"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 9,
+    "fields": {
+      "product": 4,
+      "image": "products/Amber_ould_Gold_2.jpg",
+      "alt_text": "Amber Ould Gold"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 12,
+    "fields": {
+      "product": 6,
+      "image": "products/Gemini_Generated_Image_46toa546toa546to.png",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 13,
+    "fields": {
+      "product": 6,
+      "image": "products/licensed-image_1.jpg",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 14,
+    "fields": {
+      "product": 6,
+      "image": "products/Gemini_Generated_Image_rfxrfrfxrfrfxrfr.png",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 15,
+    "fields": {
+      "product": 6,
+      "image": "products/Gemini_Generated_Image_u8971ou8971ou897.png",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 16,
+    "fields": {
+      "product": 7,
+      "image": "products/Gemini_Generated_Image_5ddsnz5ddsnz5dds.png",
+      "alt_text": "Gucci Flora Gorgeous Gardenia Eau de Parfum"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 17,
+    "fields": {
+      "product": 7,
+      "image": "products/Gemini_Generated_Image_mvgqpomvgqpomvgq.png",
+      "alt_text": "Gucci Flora Gorgeous Gardenia Eau de Parfum"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 18,
+    "fields": {
+      "product": 3,
+      "image": "products/Gemini_Generated_Image_tozikatozikatozi.png",
+      "alt_text": "Afnan"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 19,
+    "fields": {
+      "product": 3,
+      "image": "products/Gemini_Generated_Image_jzteqvjzteqvjzte.png",
+      "alt_text": "Afnan"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 20,
+    "fields": {
+      "product": 5,
+      "image": "products/Gemini_Generated_Image_69qz6o69qz6o69qz.png",
+      "alt_text": "Azzaro Most Wanted"
+    }
+  },
+  {
+    "model": "products.productimage",
+    "pk": 21,
+    "fields": {
+      "product": 5,
+      "image": "products/Gemini_Generated_Image_blx0s8blx0s8blx0.png",
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 1,
+    "fields": {
+      "product": null,
+      "question": "Where Can I buy the best perfumes Online?",
+      "answer": "NoseKnows is your ultimate online destination for all your fragrance needs. We offer a wide range of perfumes for men, women, and unisex options, including designer classics and niche scents.",
+      "featured": true,
+      "created_at": "2025-10-26T01:38:42.940Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 2,
+    "fields": {
+      "product": null,
+      "question": "Do you offer home delivery/office?",
+      "answer": "In Nairobi, we offer delivery to your doorstep within the hour at no extra cost and you only get to pay once you receive your order. We want to be the store that comes to your mind every time you think of where to buy original perfumes in Kenya and get excellent after-sales service. Delivery to other parts of the country takes 12-24 hours.",
+      "featured": true,
+      "created_at": "2025-10-26T01:39:48.977Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 3,
+    "fields": {
+      "product": null,
+      "question": "How can I purchase a perfume gift?",
+      "answer": "At NoseKnows, You can buy perfume gifts in Kenya by contacting us and specifying the exact perfume you want, or place an order, and in the order description, specify it's a gift. For gift purchases, payment is made before dispatch, but for normal orders, payment on delivery is allowed.",
+      "featured": true,
+      "created_at": "2025-10-26T01:40:32.475Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 4,
+    "fields": {
+      "product": null,
+      "question": "What Perfume Scents do you have?",
+      "answer": "At NoseKnows, we have a wide range of scents, From floral and fruity fragrances to woody and oriental scents, our collection suits every taste and occasion. We offer designer perfumes, niche blends, and even options for gifting.",
+      "featured": true,
+      "created_at": "2025-10-26T01:41:49.390Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 5,
+    "fields": {
+      "product": null,
+      "question": "Do you offer Refills?",
+      "answer": "No, Currently we do not offer refills.",
+      "featured": true,
+      "created_at": "2025-10-26T01:42:38.319Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 6,
+    "fields": {
+      "product": null,
+      "question": "What Payment methods do you have?",
+      "answer": "We accept mobile money (M-Pesa), credit/debit cards, and cash on delivery within Nairobi. Choose the option that suits you best at checkout.",
+      "featured": true,
+      "created_at": "2025-10-26T01:43:18.775Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 7,
+    "fields": {
+      "product": null,
+      "question": "What are \"fragrance notes,\" and what do they mean?",
+      "answer": "Fragrance notes are the individual scent layers that make up a perfume, categorized into top (head), middle (or heart), and base notes.\r\n\r\nTop Notes are what you smell immediately when you first spray a fragrance. They're typically light, fresh, and volatile, lasting about 15-30 minutes.\r\n\r\nMiddle Notes (Heart Notes) emerge as the top notes fade, usually appearing 30 minutes to 4 hours after application.\r\n\r\nBase Notes are the foundation of the fragrance, appearing 2-4 hours after application and lasting the longest on your skin.",
+      "featured": true,
+      "created_at": "2025-10-26T01:44:22.743Z"
+    }
+  },
+  {
+    "model": "products.faq",
+    "pk": 8,
+    "fields": {
+      "product": null,
+      "question": "Do you sell niche perfumes?",
+      "answer": "We have a wide collection of the best niche fragrances in Kenya, niche perfumes for ladies, men & unisex niche brands. We offer great prices and regular discounts plus free delivery within the hour. We also import specific niche products on demand for our clients.",
+      "featured": true,
+      "created_at": "2025-10-26T01:45:12.831Z"
+    }
+  },
+  {
+    "model": "carts.cart",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "collinskim317@gmail.com"
+      ],
+      "created_at": "2025-10-22T02:36:38.594Z"
+    }
+  },
+  {
+    "model": "carts.cartitem",
+    "pk": 1,
+    "fields": {
+      "cart": 1,
+      "product": 1,
+      "quantity": 1,
+      "added_at": "2025-10-22T02:36:52.301Z"
+    }
+  },
+  {
+    "model": "carts.cartitem",
+    "pk": 2,
+    "fields": {
+      "cart": 1,
+      "product": 2,
+      "quantity": 2,
+      "added_at": "2025-10-24T02:53:36.236Z"
+    }
+  },
+  {
+    "model": "wishlist.wishlist",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "collinskim317@gmail.com"
+      ],
+      "created_at": "2025-10-22T02:37:24.865Z"
+    }
+  },
+  {
+    "model": "wishlist.wishlistitem",
+    "pk": 1,
+    "fields": {
+      "wishlist": 1,
+      "product": 2,
+      "added_at": "2025-10-24T02:59:59.496Z"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "collinskim317@gmail.com"
+      ],
+      "created_at": "2025-10-24T02:54:32.167Z",
+      "updated_at": "2025-10-24T02:54:32.167Z",
+      "status": "processing",
+      "total_amount": "10000.00"
+    }
+  }
+]

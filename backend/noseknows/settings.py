@@ -1,13 +1,19 @@
 from pathlib import Path
 import os  
 from dotenv import load_dotenv
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
-DEBUG = False # PRODUCTION SETTING
-ALLOWED_HOSTS = ['*', 'noseknows-shop.pages.dev']
+DEBUG = os.environ.get('DEBUG', 'False') == 'True' # PRODUCTION SETTING
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,*').split(',')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",             # Local React
+    "https://noseknows-shop.pages.dev",  # Live Cloudflare Frontend
+]
 
 # RECOMMENDED: For better security, once you have the Choreo domain:
 # ALLOWED_HOSTS = ['.choreo.dev', 'your-frontend-domain.com']
@@ -68,14 +74,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'noseknows.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'noseknows'),
-        'USER': os.getenv('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
-        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
-        'PORT': os.getenv('DATABASE_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -94,6 +97,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
