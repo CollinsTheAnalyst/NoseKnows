@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Brand, Category, ProductType, Product, ProductVariant, ProductImage, FAQ
 
+
+
 # 🔹 Brand Serializer
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
@@ -57,19 +59,11 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'id',
-            'name',
-            'slug',
-            'description',
-            'scent_notes',
-            'brand',
-            'categories',
-            'product_type',
-            'images',
-            'variants',
-            'created_at',
-            'updated_at',
+            'id', 'name', 'slug', 'description', 'brand', 'categories', 
+            'product_type', 'tags', 'top_notes', 'heart_notes', 'base_notes', 
+            'is_active', 'is_featured', 'in_stock', 'variants', 'images'
         ]
+
 
 # 🔹 FAQ Serializer
 class FAQSerializer(serializers.ModelSerializer):

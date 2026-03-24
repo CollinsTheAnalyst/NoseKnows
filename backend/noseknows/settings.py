@@ -107,13 +107,20 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication', # Recommended for React
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
 }
 
+
+
+
+
 # CORS FIX: Removed conflicting CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    # Allow your live frontend domain to access the API
+    "http://localhost:5173",
     "https://noseknows-shop.pages.dev", 
 ]
 
@@ -123,8 +130,6 @@ MPESA_SHORTCODE = "174379"  # test shortcode for sandbox
 MPESA_PASSKEY = "your_passkey_from_portal"
 MPESA_CALLBACK_URL = "https://yourdomain.com/api/mpesa/callback/"
 
-# backend/noseknows/settings.py
-# ... (at the end of your settings.py or wherever you put specific app settings)
 
 JAZZMIN_SETTINGS = {
     # TITLE AND LOGO

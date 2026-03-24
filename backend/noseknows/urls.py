@@ -12,6 +12,8 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
+    path('api/', include('products.frontend_urls')),
+
     # Consolidate API app routing under /api/
     path('api/', include('users.urls')),
     path('api/', include('products.urls')),
