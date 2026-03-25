@@ -2,7 +2,7 @@
 import React from "react";
 import { FaShippingFast, FaCertificate, FaGift } from "react-icons/fa";
 import Button from "../button/button.jsx";
-import heroBottle from "../../assets/spray.png";
+import heroBottle from "../../assets/Noseknowshero.png";
 import noseknowsLogo from "../../assets/Noseknows_logo.png";
 
 const HeroSection = () => {
@@ -72,11 +72,11 @@ const HeroSection = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex-1 flex justify-center lg:justify-end items-center relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[420px] overflow-hidden mt-8 lg:mt-0">
+        <div className="flex-1 flex justify-center lg:justify-end items-center relative w-full h-[450px] sm:h-[450px] md:h-[450px] lg:h-[420px] overflow-hidden mt-8 mr-8 lg:mt-0">
           <img
             src={heroBottle}
             alt="Woman with flowers" // Changed alt text for better accuracy
-            className="h-full w-auto max-w-full object-contain transition-transform duration-500 hover:scale-105"
+            className="h-full w-auto max-w-full object-contain transition-transform duration-400 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-[#fff3f6] via-transparent to-transparent opacity-60 pointer-events-none"></div>
         </div>

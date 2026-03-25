@@ -21,6 +21,8 @@ import CartPage from "./pages/CartPage.jsx";
 import OrderDetailsForm from "./pages/OrderDetailsForm.jsx";
 
 
+
+
 // Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -80,10 +82,13 @@ const App = () => {
             <Route path="/wishlist" element={<WishlistPage />}/>
 
             {/* Cart View: Loads the multi-item cart view */}
-            <Route path="/checkout" element={<CartPage />} />
+            <Route path="/checkout" element={<OrderDetailsForm />} /> 
             
             {/* ✅ FIX: Route /checkout/summary to the Order Details Form */}
             <Route path="/checkout/summary" element={<OrderDetailsForm />} /> 
+
+              {/* Final Confirmation Screen */}
+              <Route path="/checkout/confirmation" element={<Confirmation />} />
 
             {/* Final Confirmation Screen */}
             <Route path="/checkout/confirmation" element={<Confirmation />} />

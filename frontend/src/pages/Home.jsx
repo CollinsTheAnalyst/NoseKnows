@@ -24,38 +24,49 @@ const Home = () => {
 
   // 🔹 Fetch products, brands, FAQs (FINAL CORRECTED PRODUCTION URLs)
   useEffect(() => {
-    // Products
-    fetch(`${API_URL}/api/products/`) // <-- CORRECTED
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.results || []);
-        setLoadingProducts(false);
-      })
-      .catch((err) => console.error("Failed to load products:", err));
+    // Products
+    fetch(`${API_URL}/api/products/`)
+      .then((res) => res.ok ? res.json() : {results: []}) // Fallback if 401
+      .then((data) => {
+        setProducts(data.results || []);
+        setLoadingProducts(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load products:", err);
+        setProducts([]);
+        setLoadingProducts(false);
+      });
 
-    // Brands
-    fetch(`${API_URL}/api/brands/`) // <-- CORRECTED
-      .then((res) => res.json())
-      .then((data) => {
-        setBrands(data.results || []);
-        setLoadingBrands(false);
-      })
-      .catch((err) => console.error("Failed to load brands:", err));
+    // Brands
+    fetch(`${API_URL}/api/brands/`)
+      .then((res) => res.ok ? res.json() : {results: []})
+      .then((data) => {
+        setBrands(data.results || []);
+        setLoadingBrands(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load brands:", err);
+        setBrands([]);
+        setLoadingBrands(false);
+      });
 
-    // FAQs
-    fetch(`${API_URL}/api/faqs/?featured=true`) // <-- CORRECTED
-      .then((res) => res.json())
-      .then((data) => {
-        setFaqs(data.results || data);
-        setLoadingFaqs(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load FAQs:", err);
-        setLoadingFaqs(false);
-      });
-  }, []);
+    // FAQs
+    fetch(`${API_URL}/api/faqs/?featured=true`)
+      .then((res) => res.ok ? res.json() : []) // Fallback to empty array
+      .then((data) => {
+        // Handle both paginated ({results: []}) and non-paginated ([]) data
+        const finalFaqs = data.results || (Array.isArray(data) ? data : []);
+        setFaqs(finalFaqs);
+        setLoadingFaqs(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load FAQs:", err);
+        setFaqs([]);
+        setLoadingFaqs(false);
+      });
+  }, []);
 
-  // 🔹 Product Section Renderer (omitted for brevity)
+ 
   const renderProductSection = (
     title,
     productList,
@@ -63,7 +74,7 @@ const Home = () => {
   ) => (
     <>
       <div className="text-center mb-4">
-        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">
+        <h2 className="text-5xl sm:text-5xl font-bold font-['GreatVibes',serif] text-[#042540]">
           {title}
         </h2>
       </div>
@@ -150,7 +161,7 @@ const Home = () => {
 
       {/* ✅ Featured Brands */}
       <div className="text-center mb-4">
-        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">
+        <h2 className="text-5xl sm:text-5xl font-bold font-['GreatVibes',serif] text-[#042540]">
           Featured Brands
         </h2>
       </div>
@@ -173,7 +184,7 @@ const Home = () => {
 
       {/* ✅ FAQs Section */}
       <div className="text-center mb-4">
-        <h2 className="text-4xl sm:text-5xl font-['GreatVibes',serif] text-[#042540]">
+        <h2 className="text-5xl sm:text-5xl font-bold font-['GreatVibes',serif] text-[#042540]">
           Frequently Asked Questions
         </h2>
       </div>
