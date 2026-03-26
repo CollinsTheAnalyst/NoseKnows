@@ -7,16 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
-DEBUG = os.environ.get('DEBUG', 'False') == 'True' # PRODUCTION SETTING
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,*').split(',')
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",             # Local React
-    "https://noseknows-shop.pages.dev",  # Live Cloudflare Frontend
-]
-
-# RECOMMENDED: For better security, once you have the Choreo domain:
-# ALLOWED_HOSTS = ['.choreo.dev', 'your-frontend-domain.com']
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.ngrok-free.app').split(',')
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -43,7 +35,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # allow frontend-backend communication
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,10 +51,11 @@ ROOT_URLCONF = 'noseknows.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # ✅ Ensures local admin/index.html is used first
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug', # Added for better template debugging
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -94,6 +87,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -108,71 +104,58 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication', # Recommended for React
+        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
 }
 
-
-
-
-
-# CORS FIX: Removed conflicting CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://noseknows-shop.pages.dev", 
+    "http://127.0.0.1:5173",
+    "https://noseknows-shop.pages.dev",
+    "https://detra-unjapanned-ashton.ngrok-free.dev",
 ]
 
-MPESA_CONSUMER_KEY = "your_consumer_key"
-MPESA_CONSUMER_SECRET = "your_consumer_secret"
-MPESA_SHORTCODE = "174379"  # test shortcode for sandbox
-MPESA_PASSKEY = "your_passkey_from_portal"
-MPESA_CALLBACK_URL = "https://yourdomain.com/api/mpesa/callback/"
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.ngrok-free.dev",
+    "https://*.ngrok-free.app", # ✅ Added for 2026 Ngrok compatibility
+    "https://noseknows-shop.pages.dev"
+]
 
+MPESA_CONSUMER_KEY = os.environ.get("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = os.environ.get("MPESA_CONSUMER_SECRET")
+MPESA_SHORTCODE = os.environ.get("MPESA_SHORTCODE")
+MPESA_PASSKEY = os.environ.get("MPESA_PASSKEY")
+MPESA_CALLBACK_URL = os.environ.get("MPESA_CALLBACK_URL")
 
 JAZZMIN_SETTINGS = {
-    # TITLE AND LOGO
     "site_title": "NoseKnows Admin",
     "site_header": "NoseKnows",
     "site_brand": "NoseKnows",
-    "site_icon": "admin/img/favicon.png", # Path to your favicon, e.g., in static/admin/img/
+    "site_icon": "admin/img/favicon.png", 
     "welcome_sign": "Welcome to the NoseKnows Admin!",
     "copyright": "NoseKnows Ltd",
     "show_sidebar": True,
     "navigation_expanded": True,
-    "hide_apps": [],
-    "hide_models": [],
-    "order_with_respect_to": ["users", "products", "orders", "carts", "wishlist", "blog", "reviews", "checkout"],
 
-    # UI THEMES
-    "topbar_material": "navbar-dark", # or navbar-light
-    "sidebar_themes": {
-        "darkly": "bg-dark", # A nice dark theme
-        "flatly": "bg-light", # A light theme
-        "cosmo": "bg-info", # A blue theme
+    "topmenu_links": [
+        # ✅ Points the Dashboard button to your Analytics View
+        {"name": "Dashboard", "url": "admin-analytics", "permissions": ["auth.view_user"]},
+        {"model": "auth.User"},
+    ],
+   
+    "custom_links": {
+        "checkout": [{
+            "name": "Analytics Report", 
+            "url": "admin-analytics", 
+            "icon": "fas fa-chart-line",
+        }]
     },
-    "theme": "darkly", # Choose your preferred theme here
-    "dark_mode_theme": "darkly", # Default dark mode theme
-    "navbar_variants": [
-        "navbar-dark", "navbar-primary", "navbar-info", "navbar-success",
-        "navbar-warning", "navbar-danger", "navbar-white", "navbar-light"
-    ],
-    "sidebar_variants": [
-        "sidebar-dark-primary", "sidebar-dark-info", "sidebar-dark-danger",
-        "sidebar-light-primary", "sidebar-light-info", "sidebar-light-danger"
-    ],
-    "sidebar": "sidebar-dark-primary", # Or 'sidebar-light-info', etc.
-    "brand_color": "navbar-primary",
 
-    # ACTIONS & LINKS
-    "custom_css": None, # Add path to custom CSS for finer adjustments
-    "custom_js": None,
-    "related_modal_active": False,
-    "user_avatar": "null", # or "avatar.png" for a default user avatar if you have one
-
-    "show_ui_builder": False, # Set to True temporarily to explore themes, then False for production
-
+    "theme": "flatly", 
+    "dark_mode_theme": None,
+    
     "icons": {
         "auth": "fas fa-users-cog",
         "users.User": "fas fa-user",
@@ -183,24 +166,22 @@ JAZZMIN_SETTINGS = {
         "carts.Cart": "fas fa-shopping-basket",
         "wishlist.Wishlist": "fas fa-heart",
         "reviews.Review": "fas fa-comments",
-        "blog.Post": "fas fa-newspaper", # ✅ Blog icon
-        "blog.Category": "fas fa-folder-open", # ✅ Blog category icon
-        "checkout.Payment": "fas fa-money-check-alt",
-        # You can add icons for all your models!
+        "blog.Post": "fas fa-newspaper",
+        "blog.Category": "fas fa-folder-open",
+        "checkout.Order": "fas fa-money-check-alt",
     },
-    # list of apps (and/or models) to display in the side menu
-    # flask style navigation
+    
     "order_with_respect_to": [
-        "users",
-        "products",
-        "orders",
-        "carts",
-        "wishlist",
-        "reviews",
-        "blog", # ✅ Blog app order
-        "checkout",
+        "checkout", # Analytics/Orders near the top
+        "users", 
+        "products", 
+        "blog",
         "auth",
     ],
+    
+    "show_ui_builder": False,
+    "related_modal_active": True,
+    "custom_css": "admin/css/custom_admin.css", 
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -208,32 +189,28 @@ JAZZMIN_UI_TWEAKS = {
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": False,
+    "brand_colour": "navbar-dark",
     "accent": "accent-primary",
-    "navbar": "navbar-white navbar-light", # Light navbar
-    "no_navbar_border": False,
-    "navbar_fixed": False,
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": True,
+    "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary", # Dark sidebar with primary accent
+    "sidebar": "sidebar-dark-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
-    "sidebar_nav_child_indent": False,
+    "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": False,
-    "theme": "darkly", # Or 'flatly', 'vapor', 'sketchy', etc.
-    "dark_mode_theme": None,
+    "sidebar_nav_flat_style": True,
+    "theme": "flatly",
     "button_classes": {
-        "primary": "btn-outline-primary",
-        "secondary": "btn-outline-secondary",
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
         "info": "btn-info",
         "warning": "btn-warning",
         "danger": "btn-danger",
         "success": "btn-success"
-    },
-    "actions_classes": {
-        "btn-danger": "btn-danger"
     }
 }

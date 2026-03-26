@@ -1,11 +1,9 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import PaymentViewSet, MpesaPaymentView
-
-router = DefaultRouter()
-router.register(r'payments', PaymentViewSet, basename='payments')
+from django.urls import path
+# ✅ Make sure check_payment_status is added to the import list
+from .views import MpesaSTKPushView, mpesa_callback, check_payment_status
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('mpesa-pay/', MpesaPaymentView.as_view(), name='mpesa-pay'),
+    path('mpesa-pay/', MpesaSTKPushView.as_view(), name='mpesa_pay'),
+    path('mpesa-callback/', mpesa_callback, name='mpesa_callback'),
+    path('check-status/<str:checkout_id>/', check_payment_status, name='check_status'),
 ]

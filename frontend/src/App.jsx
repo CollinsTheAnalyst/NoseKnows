@@ -20,6 +20,8 @@ import CartPage from "./pages/CartPage.jsx";
 // ✅ NEW: Import the component that collects delivery/payment details
 import OrderDetailsForm from "./pages/OrderDetailsForm.jsx";
 
+import CheckoutConfirmation from './pages/CheckoutConfirmation';
+
 
 
 
@@ -87,11 +89,9 @@ const App = () => {
             {/* ✅ FIX: Route /checkout/summary to the Order Details Form */}
             <Route path="/checkout/summary" element={<OrderDetailsForm />} /> 
 
-              {/* Final Confirmation Screen */}
-              <Route path="/checkout/confirmation" element={<Confirmation />} />
 
-            {/* Final Confirmation Screen */}
-            <Route path="/checkout/confirmation" element={<Confirmation />} />
+            // Inside your Routes
+          <Route path="/checkout/confirmation" element={<CheckoutConfirmation />} />
 
             {/* Fallback route for unmatched paths */}
             <Route
