@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
 from .models import Review
-from .serializer import ReviewSerializer
+from .serializers import ReviewSerializer
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()

@@ -5,7 +5,8 @@ from .views import (
     ProductListView, 
     ProductDetailView, 
     BrandListView, 
-    BrandDetailView
+    BrandDetailView,
+    FAQList
 )
 
 router = DefaultRouter()
@@ -23,4 +24,6 @@ urlpatterns = [
     # 3. Public Brand Routes
     path('brands/', BrandListView.as_view(), name='brand-list'),
     path('brands/<slug:slug>/', BrandDetailView.as_view(), name='brand-detail'),
+
+    path('faqs/', FAQList.as_view(), name='faq-list')
 ]

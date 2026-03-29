@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Cart, CartItem
-from .serializer import CartSerializer, CartItemSerializer
+from .serializers import CartSerializer, CartItemSerializer
 
 class CartViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.all()

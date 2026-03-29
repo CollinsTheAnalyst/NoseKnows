@@ -21,6 +21,7 @@ import CartPage from "./pages/CartPage.jsx";
 import OrderDetailsForm from "./pages/OrderDetailsForm.jsx";
 
 import CheckoutConfirmation from './pages/CheckoutConfirmation';
+import Checkout from "./pages/checkout.jsx"; // Make sure the path/capitalization matches
 
 
 
@@ -66,8 +67,8 @@ const App = () => {
       <ScrollToTop />
       <TopNav />
 
+      {/* 1. Remove the max-w-7xl div from here */}
       <main className="min-h-screen bg-accent text-secondary font-sans">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -83,17 +84,12 @@ const App = () => {
             {/* Wishlist */}
             <Route path="/wishlist" element={<WishlistPage />}/>
 
-            {/* Cart View: Loads the multi-item cart view */}
-            <Route path="/checkout" element={<OrderDetailsForm />} /> 
-            
-            {/* ✅ FIX: Route /checkout/summary to the Order Details Form */}
-            <Route path="/checkout/summary" element={<OrderDetailsForm />} /> 
+            {/* Checkout */}
+            <Route path="/checkout" element={<Checkout />} /> 
+            <Route path="/checkout/summary" element={<Checkout />} /> 
+            <Route path="/checkout/confirmation" element={<CheckoutConfirmation />} />
 
-
-            // Inside your Routes
-          <Route path="/checkout/confirmation" element={<CheckoutConfirmation />} />
-
-            {/* Fallback route for unmatched paths */}
+            {/* Fallback route */}
             <Route
               path="*"
               element={
@@ -103,7 +99,6 @@ const App = () => {
               }
             />
           </Routes>
-        </div>
       </main>
 
       <Footer />

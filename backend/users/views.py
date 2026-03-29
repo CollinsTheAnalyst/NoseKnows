@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .models import User
-from .serializer import UserSerializer, UserCreateSerializer
+from .serializers import UserSerializer, UserCreateSerializer
 from rest_framework.permissions import IsAdminUser
 
 class UserViewSet(viewsets.ModelViewSet):

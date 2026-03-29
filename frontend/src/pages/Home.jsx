@@ -6,6 +6,7 @@ import HeroFilter from "../components/filters/herofilter.jsx"; // CORRECTED CASI
 import Card from "../components/card/card.jsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useCart } from "../context/cartcontext.jsx";
+import SupportBanner from "../components/support/SupportBanner.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"; // Dynamic URL
 
@@ -158,6 +159,9 @@ const Home = () => {
           )}
         </>
       )}
+
+      {/* ✅ ADD SUPPORT BANNER HERE */}
+  <SupportBanner />
 
       {/* ✅ Featured Brands */}
       <div className="text-center mb-4">

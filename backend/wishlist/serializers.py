@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Wishlist, WishlistItem
-from products.serializer import ProductSerializer
+from products.serializers import ProductSerializer
 
 class WishlistItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)

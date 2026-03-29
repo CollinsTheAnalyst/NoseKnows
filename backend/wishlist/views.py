@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Wishlist, WishlistItem
-from .serializer import WishlistSerializer, WishlistItemSerializer
+from .serializers import WishlistSerializer, WishlistItemSerializer
 
 class WishlistViewSet(viewsets.ModelViewSet):
     queryset = Wishlist.objects.all()

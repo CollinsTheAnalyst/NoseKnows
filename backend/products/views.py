@@ -1,7 +1,10 @@
 from rest_framework import generics, viewsets
 from rest_framework.permissions import AllowAny
 from .models import Brand, Product
-from .serializer import BrandSerializer, ProductSerializer
+from .serializers import BrandSerializer, ProductSerializer
+from rest_framework import generics, permissions
+from .models import FAQ
+from .serializers import FAQSerializer
 
 # Admin-only product management
 class ProductViewSet(viewsets.ModelViewSet):
@@ -44,5 +47,19 @@ class ProductDetailView(generics.RetrieveAPIView):
     authentication_classes = [] 
 
 
+class FAQList(generics.ListAPIView):
+    serializer_class = FAQSerializer
+    permission_classes = [permissions.AllowAny]
+    authentication_classes = [] # Fix for the 401/403 issues
+
+    def get_queryset(self):
+        queryset = FAQ.objects.all()
+        featured_param = self.request.query_params.get('featured')
+        
+        if featured_param == 'true':
+            # Use 'featured' because that's what is in your Serializer/Model
+            queryset = queryset.filter(featured=True) 
+            
+        return queryset.order_by('-created_at')
     
 

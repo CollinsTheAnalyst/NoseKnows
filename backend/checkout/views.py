@@ -1,28 +1,72 @@
 import json
+import uuid
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.admin.views.decorators import staff_member_required # ✅ New Import
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 
 from .models import Order
 from .mpesa import initiate_stk_push
 from .analytics import get_analytics_data
 
 # --- ANALYTICS VIEW ---
-@staff_member_required # ✅ Ensures only logged-in admins see this
+@staff_member_required
 def admin_analytics_view(request):
     context = get_analytics_data()
     context['title'] = 'Analytics'
     return render(request, 'admin/analytics.html', context)
+
+
+# --- CARD PAYMENT VIEW (NEW) ---
+class CardPaymentView(APIView):
+    """
+    Handles Credit Card logic. 
+    In a real app, you'd integrate Stripe or Flutterwave here.
+    """
+    def post(self, request):
+        data = request.data
+        amount = data.get('amount')
+        email = data.get('email')
+        
+        # 1. Create a pending Order in the DB
+        # We generate a unique transaction ID since Card doesn't use 'CheckoutRequestID'
+        transaction_id = f"CARD-{uuid.uuid4().hex[:10].upper()}"
+        
+        order = Order.objects.create(
+            checkout_request_id=transaction_id,
+            amount=amount,
+            phone=data.get('phone', 'N/A'),
+            status='PENDING',
+            # You might want to add name/email fields to your Order model
+        )
+
+        # 2. MOCK GATEWAY LOGIC
+        # Usually, you'd send card details to your provider here.
+        # If successful:
+        order.status = 'COMPLETED'
+        order.receipt_number = f"BILL-{uuid.uuid4().hex[:6].upper()}"
+        order.save()
+
+        return Response({
+            "message": "Card Payment Successful",
+            "transaction_id": transaction_id,
+            "status": "COMPLETED"
+        }, status=status.HTTP_200_OK)
+
 
 # --- MPESA STK PUSH VIEW ---
 class MpesaSTKPushView(APIView):
     def post(self, request):
         phone = request.data.get('phone')
         amount = request.data.get('amount')
+        
+        # Ensure we capture extra details from your new Checkout form
+        email = request.data.get('email')
+        first_name = request.data.get('firstName')
         
         response = initiate_stk_push(phone, amount)
         
@@ -31,7 +75,9 @@ class MpesaSTKPushView(APIView):
                 checkout_request_id=response['CheckoutRequestID'],
                 merchant_request_id=response['MerchantRequestID'],
                 amount=amount,
-                phone=phone
+                phone=phone,
+                # Store extra info if your model supports it
+                status='PENDING'
             )
             return Response({
                 "message": "STK Push Sent", 
@@ -54,25 +100,25 @@ def mpesa_callback(request):
                 order = Order.objects.get(checkout_request_id=checkout_id)
                 if result_code == 0:
                     items = stk_callback.get('CallbackMetadata', {}).get('Item', [])
-                    receipt = next((i['Value'] for i in items if i['Name'] == 'MpesaReceiptNumber'), None)
+                    # Safer way to get receipt
+                    receipt = None
+                    for item in items:
+                        if item.get('Name') == 'MpesaReceiptNumber':
+                            receipt = item.get('Value')
                     
                     order.status = 'COMPLETED'
                     order.receipt_number = receipt
                     order.save()
-                    print(f"✅ Order {checkout_id} SUCCESS")
                 else:
                     order.status = 'FAILED'
                     order.save()
-                    print(f"❌ Order {checkout_id} FAILED")
 
             except Order.DoesNotExist:
-                print(f"⚠️ Unknown Order ID: {checkout_id}")
+                pass
 
             return JsonResponse({"ResultCode": 0, "ResultDesc": "Success"})
-
         except Exception as e:
-            print(f"🔥 Callback Error: {str(e)}")
-            return JsonResponse({"ResultCode": 1, "ResultDesc": "Error"}, status=400)
+            return JsonResponse({"ResultCode": 1, "ResultDesc": str(e)}, status=400)
 
     return JsonResponse({"error": "Method not allowed"}, status=405)
 
