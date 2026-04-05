@@ -4,6 +4,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -13,6 +17,40 @@ from .models import Order
 from .mpesa import initiate_stk_push
 from .analytics import get_analytics_data
 
+# --- EMAIL HELPER ---
+def send_order_confirmation_email(order, items_data=None):
+    """
+    Sends a luxury styled email to the customer upon successful payment.
+    items_data: expects a list of dictionaries containing product details.
+    """
+    if not order.email:
+        return
+        
+    subject = f"Order Confirmed! Your NoseKnows Luxury Scent is on the way (#{order.receipt_number or order.checkout_request_id})"
+    from_email = settings.DEFAULT_FROM_EMAIL 
+    
+    to = order.email
+
+    context = {
+        'first_name': order.first_name or "Valued Customer",
+        'order_id': order.receipt_number or order.checkout_request_id,
+        'amount': order.amount,
+        'status': order.status,
+        'items': items_data,  # Passed to the template for the 'Your Selection' table
+    }
+
+    try:
+        # Render HTML template from templates/emails/order_confirmation.html
+        html_content = render_to_string('emails/order_confirmation.html', context)
+        text_content = strip_tags(html_content) 
+
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+    except Exception as e:
+        print(f"Email failed to send: {e}")
+
+
 # --- ANALYTICS VIEW ---
 @staff_member_required
 def admin_analytics_view(request):
@@ -21,39 +59,62 @@ def admin_analytics_view(request):
     return render(request, 'admin/analytics.html', context)
 
 
-# --- CARD PAYMENT VIEW (NEW) ---
+# --- CARD PAYMENT VIEW ---
 class CardPaymentView(APIView):
-    """
-    Handles Credit Card logic. 
-    In a real app, you'd integrate Stripe or Flutterwave here.
-    """
     def post(self, request):
         data = request.data
-        amount = data.get('amount')
-        email = data.get('email')
+        items = data.get('items', []) # Capture items for email
         
-        # 1. Create a pending Order in the DB
-        # We generate a unique transaction ID since Card doesn't use 'CheckoutRequestID'
         transaction_id = f"CARD-{uuid.uuid4().hex[:10].upper()}"
         
         order = Order.objects.create(
             checkout_request_id=transaction_id,
-            amount=amount,
+            amount=data.get('amount'),
             phone=data.get('phone', 'N/A'),
-            status='PENDING',
-            # You might want to add name/email fields to your Order model
+            email=data.get('email'),
+            first_name=data.get('firstName'),
+            status='COMPLETED'
         )
 
-        # 2. MOCK GATEWAY LOGIC
-        # Usually, you'd send card details to your provider here.
-        # If successful:
-        order.status = 'COMPLETED'
         order.receipt_number = f"BILL-{uuid.uuid4().hex[:6].upper()}"
         order.save()
+
+        # Send Confirmation Email with items
+        send_order_confirmation_email(order, items_data=items)
 
         return Response({
             "message": "Card Payment Successful",
             "transaction_id": transaction_id,
+            "order_id": order.receipt_number,
+            "status": "COMPLETED"
+        }, status=status.HTTP_200_OK)
+
+
+# --- CASH ON DELIVERY VIEW ---
+class CODPaymentView(APIView):
+    def post(self, request):
+        data = request.data
+        items = data.get('items', [])
+        
+        transaction_id = f"COD-{uuid.uuid4().hex[:10].upper()}"
+        
+        order = Order.objects.create(
+            checkout_request_id=transaction_id,
+            amount=data.get('amount'),
+            phone=data.get('phone', 'N/A'),
+            email=data.get('email'),
+            first_name=data.get('firstName'),
+            status='COMPLETED' # COD orders are marked completed to trigger confirmation
+        )
+        
+        order.receipt_number = transaction_id
+        order.save()
+
+        send_order_confirmation_email(order, items_data=items)
+
+        return Response({
+            "message": "Order Placed Successfully",
+            "order_id": order.receipt_number,
             "status": "COMPLETED"
         }, status=status.HTTP_200_OK)
 
@@ -63,10 +124,9 @@ class MpesaSTKPushView(APIView):
     def post(self, request):
         phone = request.data.get('phone')
         amount = request.data.get('amount')
-        
-        # Ensure we capture extra details from your new Checkout form
         email = request.data.get('email')
         first_name = request.data.get('firstName')
+        items = request.data.get('items', []) # Capture items
         
         response = initiate_stk_push(phone, amount)
         
@@ -76,8 +136,11 @@ class MpesaSTKPushView(APIView):
                 merchant_request_id=response['MerchantRequestID'],
                 amount=amount,
                 phone=phone,
-                # Store extra info if your model supports it
+                email=email,
+                first_name=first_name,
                 status='PENDING'
+                # Note: items are usually stored in a separate OrderItem model. 
+                # For email purposes, ensure your polling/callback can access this item list.
             )
             return Response({
                 "message": "STK Push Sent", 
@@ -99,16 +162,20 @@ def mpesa_callback(request):
             try:
                 order = Order.objects.get(checkout_request_id=checkout_id)
                 if result_code == 0:
-                    items = stk_callback.get('CallbackMetadata', {}).get('Item', [])
-                    # Safer way to get receipt
+                    callback_metadata = stk_callback.get('CallbackMetadata', {}).get('Item', [])
                     receipt = None
-                    for item in items:
+                    for item in callback_metadata:
                         if item.get('Name') == 'MpesaReceiptNumber':
                             receipt = item.get('Value')
                     
                     order.status = 'COMPLETED'
                     order.receipt_number = receipt
                     order.save()
+
+                    # Trigger Email
+                    # For Mpesa callbacks, usually items are retrieved from the DB via a foreign key relationship
+                    # If you don't have an OrderItem model, you may need to pass item data during STK push.
+                    send_order_confirmation_email(order)
                 else:
                     order.status = 'FAILED'
                     order.save()
@@ -129,7 +196,8 @@ def check_payment_status(request, checkout_id):
         order = Order.objects.get(checkout_request_id=checkout_id)
         return Response({
             "status": order.status,
-            "receipt": order.receipt_number
+            "receipt": order.receipt_number,
+            "customerName": order.first_name
         })
     except Order.DoesNotExist:
         return Response({"error": "Order not found"}, status=404)

@@ -6,7 +6,8 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
-SECRET_KEY = 'django-insecure-z%+p$e74q6p_)6sg@f)g#mq@g67bj-1b@f1wgqpvp2wsvsnbci'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-if-local')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.ngrok-free.app').split(',')
 
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
     # Internal apps
     'users',
     'products',
+    'discounts',
     'carts',
     'wishlist',
     'orders',
@@ -87,9 +89,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -214,3 +214,13 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-success"
     }
 }
+
+
+# backend/noseknows/settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') # The 16-character App Password
+DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_USER")

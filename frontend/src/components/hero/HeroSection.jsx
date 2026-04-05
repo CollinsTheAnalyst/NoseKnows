@@ -51,7 +51,7 @@ const HeroSection = () => {
               Shop Now
             </Button>
             <Button
-              className="bg-white border-2 border-accentBlue text-accentBlue hover:bg-accentBlue hover:text-white transition-all duration-300 text-lg px-10 py-3 rounded-full shadow-lg"
+              className="bg-accentBlue border-2 border-accentBlue text-white hover:bg-accentBlue hover:text-white transition-all duration-300 text-lg px-10 py-3 rounded-full shadow-lg"
               onClick={handleExploreBrandsClick}
             >
               Explore Brands

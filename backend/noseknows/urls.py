@@ -15,16 +15,16 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/checkout/', include('checkout.urls')),
     
-    # This acts as a fallback for brands, faqs, and products
-    path('api/', include('products.urls')), 
-
-    path('admin/analytics/', admin_analytics_view, name='admin-analytics'),
-    
-    # Keep these for specific structure
+    # ✅ 1. Move specific API paths ABOVE the general 'api/' fallback
     path('api/carts/', include('carts.urls')),
     path('api/wishlist/', include('wishlist.urls')),
     path('api/orders/', include('orders.urls')),
-    path('api/reviews/', include('reviews.urls')),
+    path('api/reviews/', include('reviews.urls')), # Specific path first!
+
+    # ✅ 2. This is your fallback/general path, keep it at the bottom of the API list
+    path('api/', include('products.urls')), 
+
+    path('admin/analytics/', admin_analytics_view, name='admin-analytics'),
 ]
 
 if settings.DEBUG:

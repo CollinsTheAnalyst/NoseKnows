@@ -67,6 +67,21 @@ class Product(models.Model):
     product_type = models.ForeignKey(ProductType, on_delete=models.SET_NULL, null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name="products", blank=True)
 
+    @property
+    def average_rating(self):
+        # We use the related_name 'product_reviews' from our Review model
+        reviews = self.product_reviews.filter(is_visible=True)
+        if reviews.exists():
+            total = sum(review.rating for review in reviews)
+            # Returns a float (e.g., 4.5)
+            return round(total / reviews.count(), 1)
+        return 0
+
+    # ✅ ADD THIS: Calculates the Total Count for the (0) bracket
+    @property
+    def review_count(self):
+        return self.product_reviews.filter(is_visible=True).count()
+
     # --- Core Info ---
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)

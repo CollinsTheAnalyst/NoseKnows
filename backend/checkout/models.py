@@ -23,6 +23,9 @@ class Order(models.Model):
         ('COMPLETED', 'Completed'),
         ('FAILED', 'Failed'),
     ]
+
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
     
     checkout_request_id = models.CharField(max_length=100, unique=True)
     merchant_request_id = models.CharField(max_length=100)
@@ -34,3 +37,6 @@ class Order(models.Model):
 
     def __str__(self):
         return f"{self.phone} - {self.amount} ({self.status})"
+    
+
+
